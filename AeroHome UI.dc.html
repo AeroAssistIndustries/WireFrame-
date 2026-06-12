@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#0A0D12;}
+  *{box-sizing:border-box;}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#222b38;border-radius:6px}
+  @keyframes ah-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @keyframes ah-scan{0%{transform:translateY(-120%)}100%{transform:translateY(320%)}}
+  @keyframes ah-ping{0%{transform:scale(.6);opacity:.7}80%,100%{transform:scale(2.1);opacity:0}}
+  @keyframes ah-float{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-4px)}}
+</style>
+</helmet>
+
+<div style="font-family:Manrope,sans-serif;background-color:#0A0D12;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:44px 44px;min-height:100vh;padding:54px 56px 110px;color:#EDF1F6">
+
+  <!-- ============ HEADER ============ -->
+  <header style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:30px">
+    <div style="display:flex;align-items:center;gap:22px">
+      <img src="assets/aero-mark.png" alt="AeroAssist" style="height:62px;width:auto;display:block;filter:drop-shadow(0 4px 16px rgba(216,180,104,.25))">
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.22em;color:#D8B468;text-transform:uppercase;margin-bottom:9px">AeroAssist Industries</div>
+        <h1 style="font:800 46px/.95 Manrope;letter-spacing:-.03em;margin:0;color:#fff">AeroHome <span style="font-weight:300;color:#7C8898">Product UI</span></h1>
+        <p style="margin:11px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:680px">High-fidelity visual design for the consumer app controlling the <b style="color:#CFD8E2;font-weight:700">Sentinel</b> outdoor patrol drone, the <b style="color:#CFD8E2;font-weight:700">Guardian</b> indoor robot, and the AeroHome response ladder.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:30px;font:600 11px/1 'JetBrains Mono';color:#5E6B7B;letter-spacing:.06em">
+      <div><div style="color:#EDF1F6;font-size:20px;margin-bottom:6px">14</div>SCREENS</div>
+      <div><div style="color:#EDF1F6;font-size:20px;margin-bottom:6px">06</div>FLOWS</div>
+      <div><div style="color:#15C2CE;font-size:20px;margin-bottom:6px">DARK</div>UI · v2.0</div>
+    </div>
+  </header>
+
+  <!-- ============ DESIGN SYSTEM STRIP ============ -->
+  <section style="display:grid;grid-template-columns:1.25fr 1fr 1.15fr;gap:18px;margin-top:26px">
+    <!-- palette -->
+    <div style="background:#0E131A;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 22px">
+      <div style="font:600 10px/1 'JetBrains Mono';letter-spacing:.16em;color:#5E6B7B;text-transform:uppercase;margin-bottom:16px">Palette</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#0B0F15;border:1px solid rgba(255,255,255,.12)"></div><div style="font:600 8.5px 'JetBrains Mono';color:#7C8898;margin-top:7px">INK</div></div>
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#141A23;border:1px solid rgba(255,255,255,.08)"></div><div style="font:600 8.5px 'JetBrains Mono';color:#7C8898;margin-top:7px">SURFACE</div></div>
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#15C2CE"></div><div style="font:600 8.5px 'JetBrains Mono';color:#15C2CE;margin-top:7px">TEAL</div></div>
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#D8B468"></div><div style="font:600 8.5px 'JetBrains Mono';color:#D8B468;margin-top:7px">GOLD</div></div>
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#FF4D45"></div><div style="font:600 8.5px 'JetBrains Mono';color:#FF4D45;margin-top:7px">ALERT</div></div>
+        <div style="text-align:center"><div style="width:46px;height:46px;border-radius:12px;background:#3FCB84"></div><div style="font:600 8.5px 'JetBrains Mono';color:#3FCB84;margin-top:7px">CLEAR</div></div>
+      </div>
+    </div>
+    <!-- type -->
+    <div style="background:#0E131A;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 22px">
+      <div style="font:600 10px/1 'JetBrains Mono';letter-spacing:.16em;color:#5E6B7B;text-transform:uppercase;margin-bottom:14px">Type</div>
+      <div style="font:800 30px/1 Manrope;letter-spacing:-.02em;color:#fff">Manrope</div>
+      <div style="font:500 12px/1.4 Manrope;color:#8A97A6;margin-top:6px">Geometric sans · UI &amp; display · 400–800</div>
+      <div style="font:500 12px/1 'JetBrains Mono';color:#15C2CE;margin-top:14px;letter-spacing:.04em">JetBrains Mono · TELEMETRY</div>
+    </div>
+    <!-- security state -->
+    <div style="background:#0E131A;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 22px">
+      <div style="font:600 10px/1 'JetBrains Mono';letter-spacing:.16em;color:#5E6B7B;text-transform:uppercase;margin-bottom:14px">Global Security State</div>
+      <div style="display:flex;gap:6px;background:#0B0F15;border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:5px">
+        <div style="flex:1;text-align:center;padding:9px 0;border-radius:9px;font:600 12px Manrope;color:#8A97A6">Disarmed</div>
+        <div style="flex:1;text-align:center;padding:9px 0;border-radius:9px;font:600 12px Manrope;color:#8A97A6">Home</div>
+        <div style="flex:1;text-align:center;padding:9px 0;border-radius:9px;font:800 12px Manrope;color:#04181A;background:#15C2CE">Away</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <span style="font:600 10px 'JetBrains Mono';color:#3FCB84;border:1px solid rgba(63,203,132,.4);background:rgba(63,203,132,.1);border-radius:99px;padding:4px 9px">● ALL CLEAR</span>
+        <span style="font:600 10px 'JetBrains Mono';color:#FF4D45;border:1px solid rgba(255,77,69,.4);background:rgba(255,77,69,.1);border-radius:99px;padding:4px 9px">⚠ VERIFIED</span>
+        <span style="font:600 10px 'JetBrains Mono';color:#E5A23A;border:1px solid rgba(229,162,58,.4);background:rgba(229,162,58,.1);border-radius:99px;padding:4px 9px">◐ DEGRADED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLOW 01 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(21,194,206,.5);background:rgba(21,194,206,.07);color:#15C2CE;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">01</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#15C2CE;text-transform:uppercase;margin-bottom:7px">Flow 01 · First Flight</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Onboarding &amp; Property Setup</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">From unboxing to first perimeter patrol in under 30 minutes. The drone maps the property itself — the user supervises, never configures.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 1.1 WELCOME -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">1.1 · WELCOME &amp; SYSTEM CHECK</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;align-items:center;gap:9px"><img src="assets/aero-mark.png" style="height:22px;width:auto"><span style="font:800 16px Manrope;color:#fff;letter-spacing:-.02em">AeroHome</span></div>
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:166px;background:radial-gradient(120% 90% at 50% 110%,#14323a 0%,#0d1820 55%,#0B0F15 100%);border:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-end;justify-content:center">
+                <div style="position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(rgba(21,194,206,.16),transparent);animation:ah-scan 3.4s linear infinite"></div>
+                <div style="position:absolute;top:46%;left:50%;width:30px;height:30px;transform:translate(-50%,-50%);animation:ah-float 3s ease-in-out infinite"><div style="width:30px;height:8px;background:#0e1a20;border:1px solid rgba(21,194,206,.5);border-radius:3px"></div><div style="width:2px;height:9px;background:rgba(21,194,206,.5);margin:0 auto"></div><div style="width:14px;height:6px;background:#11202a;border:1px solid rgba(21,194,206,.35);border-radius:2px;margin:0 auto"></div></div>
+                <div style="position:relative;text-align:center;padding-bottom:14px;z-index:2"><div style="font:700 10px 'JetBrains Mono';letter-spacing:.14em;color:#15C2CE">SYSTEM ANIMATION</div><div style="font:500 11px Manrope;color:#8A97A6;margin-top:3px">Sentinel lifting from Nest dock</div></div>
+                <div style="position:absolute;bottom:8px;right:11px;font:500 8.5px 'JetBrains Mono';color:#4A5564">[ hero loop ]</div>
+              </div>
+              <div><div style="font:800 19px/1.15 Manrope;color:#fff;letter-spacing:-.02em">Let's wake up your guardians</div><div style="font:500 12.5px Manrope;color:#8A97A6;margin-top:3px">We found 3 devices on your network</div></div>
+              <div style="background:#141A23;border:1px solid rgba(63,203,132,.28);border-radius:13px;padding:11px 13px;display:flex;align-items:center;gap:11px"><div style="width:8px;height:8px;border-radius:50%;background:#3FCB84;box-shadow:0 0 8px #3FCB84;flex:none"></div><div style="flex:1"><div style="font:700 13px Manrope;color:#EDF1F6">Hub</div><div style="font:500 11px Manrope;color:#8A97A6">Connected · cellular backup ✓</div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(63,203,132,.28);border-radius:13px;padding:11px 13px;display:flex;align-items:center;gap:11px"><div style="width:8px;height:8px;border-radius:50%;background:#3FCB84;box-shadow:0 0 8px #3FCB84;flex:none"></div><div style="flex:1"><div style="font:700 13px Manrope;color:#EDF1F6">Sentinel</div><div style="font:500 11px Manrope;color:#8A97A6">Docked · charging 84%</div></div><span style="font:700 11px 'JetBrains Mono';color:#3FCB84">84%</span></div>
+              <div style="background:#141A23;border:1px solid rgba(63,203,132,.28);border-radius:13px;padding:11px 13px;display:flex;align-items:center;gap:11px"><div style="width:8px;height:8px;border-radius:50%;background:#3FCB84;box-shadow:0 0 8px #3FCB84;flex:none"></div><div style="flex:1"><div style="font:700 13px Manrope;color:#EDF1F6">Guardian</div><div style="font:500 11px Manrope;color:#8A97A6">Docked · ready</div></div></div>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:9px;padding-top:6px">
+                <div style="background:#15C2CE;color:#04181A;font:800 15px Manrope;text-align:center;padding:15px;border-radius:15px;box-shadow:0 10px 26px -8px rgba(21,194,206,.5)">Begin setup</div>
+                <div style="border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 13px Manrope;text-align:center;padding:13px;border-radius:14px">Pair a missing device</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.2 MAPPING FLIGHT -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">1.2 · MAPPING FLIGHT</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:11px;flex:1">
+              <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.1em;color:#15C2CE">STEP 4 OF 5 · PERIMETER MAP</div>
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:230px;background:#0c1118;border:1px solid rgba(255,255,255,.07);background-image:linear-gradient(rgba(21,194,206,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(21,194,206,.07) 1px,transparent 1px);background-size:18px 18px">
+                <div style="position:absolute;inset:20px;border:1.5px dashed rgba(255,255,255,.28);border-radius:10px;clip-path:polygon(0 14%,72% 0,100% 30%,88% 100%,18% 92%)"></div>
+                <div style="position:absolute;left:50%;top:52%;width:150px;height:108px;transform:translate(-50%,-50%);border:2px dashed rgba(21,194,206,.6);border-radius:50%"></div>
+                <div style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:62px;height:46px;border:1.5px solid #fff;border-radius:5px;background:#11161e;display:flex;align-items:center;justify-content:center;font:700 9px 'JetBrains Mono';color:#CFD8E2">HOME</div>
+                <div style="position:absolute;right:46px;top:24px;width:14px;height:14px"><div style="position:absolute;inset:0;border-radius:50%;background:rgba(216,180,104,.5);animation:ah-ping 1.8s infinite"></div><div style="position:absolute;inset:2px;border-radius:50%;background:#D8B468;border:2px solid #8a6f2c"></div></div>
+                <div style="position:absolute;top:10px;left:12px;font:600 9px 'JetBrains Mono';color:#15C2CE;background:rgba(11,15,21,.7);padding:3px 7px;border-radius:6px">62% MAPPED</div>
+                <div style="position:absolute;bottom:9px;right:11px;font:500 8.5px 'JetBrains Mono';color:#4A5564">[ live top-down map ]</div>
+              </div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 13px Manrope;color:#EDF1F6">Calibration flight in progress…</div></div><div style="font:500 11px 'JetBrains Mono';color:#8A97A6;margin-top:5px;letter-spacing:.02em">Pass 2 of 3 · alt 28 ft · wind 7 mph</div><div style="height:6px;border-radius:99px;background:#222b38;margin-top:9px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,#15C2CE,#3FCB84);border-radius:99px"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12.5px Manrope;color:#EDF1F6">Stay inside my property line</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12.5px Manrope;color:#EDF1F6">Avoid neighbor-facing angles</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:9px;background:rgba(255,77,69,.12);border:1.5px solid #FF4D45;color:#FF7B75;font:800 13px Manrope;text-align:center;padding:15px;border-radius:15px;letter-spacing:.04em"><span style="width:9px;height:9px;border-radius:2px;background:#FF4D45;animation:ah-pulse 1.2s infinite"></span>PAUSE &amp; LAND NOW</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.3 INDOOR ZONES -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">1.3 · INDOOR ZONES &amp; PRIVACY</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:11px;flex:1">
+              <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.1em;color:#15C2CE">STEP 5 OF 5 · INDOOR FLOOR PLAN</div>
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:200px;background:#0c1118;border:1px solid rgba(255,255,255,.07);padding:14px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:7px;height:100%">
+                  <div style="border:1.5px solid rgba(255,255,255,.32);border-radius:7px;display:flex;align-items:center;justify-content:center;font:700 9.5px 'JetBrains Mono';color:#CFD8E2;background:rgba(255,255,255,.02)">LIVING</div>
+                  <div style="border:1.5px solid rgba(255,255,255,.32);border-radius:7px;display:flex;align-items:center;justify-content:center;font:700 9.5px 'JetBrains Mono';color:#CFD8E2;background:rgba(255,255,255,.02)">KITCHEN</div>
+                  <div style="border:1.5px solid rgba(255,77,69,.6);border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:700 9.5px 'JetBrains Mono';color:#FF7B75;background:rgba(255,77,69,.08)">BED 1<span style="font:600 7.5px 'JetBrains Mono'">⃠ NO-GO</span></div>
+                  <div style="border:1.5px solid rgba(255,255,255,.32);border-radius:7px;display:flex;align-items:center;justify-content:center;font:700 9.5px 'JetBrains Mono';color:#CFD8E2;background:rgba(255,255,255,.02)">HALL</div>
+                </div>
+                <div style="position:absolute;bottom:8px;right:11px;font:500 8.5px 'JetBrains Mono';color:#4A5564">[ Guardian SLAM map ]</div>
+              </div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 13px Manrope;color:#EDF1F6">Guardian mapped 6 rooms</div><div style="font:500 11.5px Manrope;color:#8A97A6;margin-top:3px">Tap a room to name it or mark it private</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div><div style="font:600 12.5px Manrope;color:#EDF1F6">Bedrooms are no-go zones</div><div style="font:500 10.5px Manrope;color:#7C8898;margin-top:2px">Enforced on-device</div></div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div><div style="font:600 12.5px Manrope;color:#EDF1F6">Privacy Mode when home</div><div style="font:500 10.5px Manrope;color:#7C8898;margin-top:2px">Shutter closes, indicator on</div></div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="margin-top:auto;background:#15C2CE;color:#04181A;font:800 15px Manrope;text-align:center;padding:15px;border-radius:15px;box-shadow:0 10px 26px -8px rgba(21,194,206,.5)">Finish — run first patrol</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============ FLOW 02 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px;border-top:1px solid rgba(255,255,255,.08);padding-top:40px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(21,194,206,.5);background:rgba(21,194,206,.07);color:#15C2CE;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">02</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#15C2CE;text-transform:uppercase;margin-bottom:7px">Flow 02 · Daily Command</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Dashboard &amp; Arming</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">The screen users see 10× a day. One glance answers: is everything okay, is everyone home, are my guardians ready?</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 2.1 DASHBOARD -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">2.1 · HOME DASHBOARD</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:11px;flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;align-items:center;gap:8px"><img src="assets/aero-mark.png" style="height:20px;width:auto"><span style="font:800 15px Manrope;color:#fff;letter-spacing:-.02em">AeroHome</span></div><div style="width:34px;height:34px;border-radius:50%;background:#1C2530;display:flex;align-items:center;justify-content:center;font:700 12px Manrope;color:#AEB9C6">SK</div></div>
+              <div style="display:flex;gap:5px;background:#0B0F15;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:5px"><div style="flex:1;text-align:center;padding:9px 0;border-radius:10px;font:600 12px Manrope;color:#8A97A6">Disarmed</div><div style="flex:1;text-align:center;padding:9px 0;border-radius:10px;font:600 12px Manrope;color:#8A97A6">Home</div><div style="flex:1;text-align:center;padding:9px 0;border-radius:10px;font:800 12px Manrope;color:#04181A;background:#15C2CE;box-shadow:0 6px 16px -6px rgba(21,194,206,.6)">Away</div></div>
+              <div style="background:linear-gradient(135deg,rgba(63,203,132,.16),rgba(63,203,132,.04));border:1px solid rgba(63,203,132,.34);border-radius:16px;padding:16px;position:relative;overflow:hidden"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3FCB84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div style="font:800 21px Manrope;color:#fff;letter-spacing:-.02em">All clear · Protected</div></div><div style="font:500 12px Manrope;color:#9fb6a8;margin-top:6px">Last patrol 14 min ago · next at 3:40 PM</div></div>
+              <div style="display:flex;gap:8px"><div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:11px 10px"><div style="font:700 12px Manrope;color:#EDF1F6">Sentinel</div><div style="font:500 10px Manrope;color:#3FCB84;margin-top:3px">Docked · 96%</div></div><div style="flex:1;background:#141A23;border:1px solid rgba(21,194,206,.3);border-radius:13px;padding:11px 10px"><div style="font:700 12px Manrope;color:#EDF1F6">Guardian</div><div style="font:500 10px Manrope;color:#15C2CE;margin-top:3px">Patrolling</div></div><div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:11px 10px"><div style="font:700 12px Manrope;color:#EDF1F6">Sensors</div><div style="font:500 10px Manrope;color:#3FCB84;margin-top:3px">9 / 9 ✓</div></div></div>
+              <div style="background:#15C2CE;color:#04181A;font:800 14.5px Manrope;text-align:center;padding:15px;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 10px 26px -8px rgba(21,194,206,.5)"><svg width="15" height="15" viewBox="0 0 24 24" fill="#04181A"><path d="M6 4l14 8-14 8z"/></svg>Patrol now · sky + ground</div>
+              <div style="display:flex;gap:8px"><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12.5px Manrope;text-align:center;padding:12px;border-radius:13px">Check on kids</div><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12.5px Manrope;text-align:center;padding:12px;border-radius:13px">Goodnight sweep</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.1em;color:#5E6B7B;margin-bottom:9px">TODAY</div><div style="display:flex;gap:9px;align-items:flex-start;margin-bottom:9px"><div style="width:7px;height:7px;border-radius:50%;background:#3FCB84;margin-top:4px;flex:none"></div><div style="font:500 11.5px/1.35 Manrope;color:#C3CDD8"><b style="color:#fff;font-weight:700">3:12 PM</b> — Maya arrived home, door locked ✓</div></div><div style="display:flex;gap:9px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:#15C2CE;margin-top:4px;flex:none"></div><div style="font:500 11.5px/1.35 Manrope;color:#C3CDD8"><b style="color:#fff;font-weight:700">1:48 PM</b> — Package at front door (verified)</div></div></div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.2 SCHEDULER -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">2.2 · PATROL SCHEDULER</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:11px;flex:1">
+              <div style="display:flex;align-items:center;justify-content:space-between"><div style="font:800 20px Manrope;color:#fff;letter-spacing:-.02em">Patrol Schedule</div><span style="font:700 9.5px 'JetBrains Mono';color:#15C2CE;border:1px solid rgba(21,194,206,.4);border-radius:99px;padding:4px 9px">AWAY MODE</span></div>
+              <div style="font:500 12px Manrope;color:#8A97A6;margin-top:-4px">Sentinel + Guardian, coordinated</div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:700 13px Manrope;color:#EDF1F6">Perimeter sweep</div><div style="font:500 11px Manrope;color:#8A97A6;margin-top:3px">Every 2 hrs · 8 AM – 10 PM</div></div><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#5E6B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:700 13px Manrope;color:#EDF1F6">Night thermal pass</div><div style="font:500 11px Manrope;color:#8A97A6;margin-top:3px">1 AM &amp; 4 AM · thermal only, no spotlight</div></div><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#5E6B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div><div style="font:600 12.5px Manrope;color:#EDF1F6">Randomize timing ±25 min</div><div style="font:500 10.5px Manrope;color:#7C8898;margin-top:2px">Predictable patrols can be timed</div></div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12.5px Manrope;color:#EDF1F6">Patrol on sensor trigger</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12.5px Manrope;color:#EDF1F6">Quiet hours for neighbors</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:rgba(229,162,58,.1);border:1px solid rgba(229,162,58,.32);border-radius:13px;padding:11px 13px;display:flex;gap:9px;align-items:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E5A23A" stroke-width="2" stroke-linecap="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12z"/></svg><div style="font:500 11px/1.35 Manrope;color:#d8b07a">8 patrols/day fits charge cycles — endurance OK</div></div>
+              <div style="margin-top:auto;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 13px Manrope;text-align:center;padding:13px;border-radius:14px;margin-bottom:8px">Edit route waypoints →</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============ FLOW 03 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px;border-top:1px solid rgba(255,255,255,.08);padding-top:40px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(21,194,206,.5);background:rgba(21,194,206,.07);color:#15C2CE;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">03</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#15C2CE;text-transform:uppercase;margin-bottom:7px">Flow 03 · Eyes Everywhere</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Live Patrol — Sky &amp; Ground</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">Watching a patrol should feel like mission control, not piloting. Users direct outcomes (“check the side gate”), never joysticks.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 3.1 SENTINEL LIVE -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">3.1 · SENTINEL LIVE VIEW</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:210px;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 9px,#0c1219 9px,#0c1219 18px);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center">
+                <div style="position:absolute;left:0;right:0;top:0;height:42%;background:linear-gradient(rgba(21,194,206,.14),transparent);animation:ah-scan 3.2s linear infinite"></div>
+                <div style="position:absolute;top:10px;left:11px;display:flex;align-items:center;gap:6px;background:rgba(11,15,21,.55);padding:4px 8px;border-radius:7px"><div style="width:7px;height:7px;border-radius:50%;background:#FF4D45;box-shadow:0 0 7px #FF4D45;animation:ah-pulse 1.3s infinite"></div><span style="font:700 9px 'JetBrains Mono';color:#fff;letter-spacing:.06em">LIVE · 4K</span></div>
+                <div style="position:absolute;top:10px;right:11px;font:700 9px 'JetBrains Mono';color:#15C2CE;background:rgba(11,15,21,.55);padding:4px 8px;border-radius:7px">8× HYBRID</div>
+                <div style="text-align:center;z-index:1"><div style="font:700 11px 'JetBrains Mono';letter-spacing:.1em;color:#C3CDD8">PERIMETER SWEEP</div><div style="font:500 11px Manrope;color:#8A97A6;margin-top:3px">east fence line</div></div>
+                <div style="position:absolute;bottom:8px;left:11px;font:500 8.5px 'JetBrains Mono';color:#4A5564">[ Sentinel camera feed ]</div>
+              </div>
+              <div style="display:flex;gap:5px;background:#0B0F15;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:4px"><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:700 11px Manrope;color:#04181A;background:#15C2CE">RGB</div><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:600 11px Manrope;color:#8A97A6">Thermal</div><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:600 11px Manrope;color:#8A97A6">Split</div></div>
+              <div style="position:relative;border-radius:13px;overflow:hidden;height:96px;background:#0c1118;border:1px solid rgba(255,255,255,.07);background-image:linear-gradient(rgba(21,194,206,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,194,206,.06) 1px,transparent 1px);background-size:15px 15px">
+                <div style="position:absolute;left:50%;top:52%;width:120px;height:68px;transform:translate(-50%,-50%);border:1.5px dashed rgba(21,194,206,.55);border-radius:50%"></div>
+                <div style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:46px;height:30px;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;background:#11161e;display:flex;align-items:center;justify-content:center;font:700 7px 'JetBrains Mono';color:#CFD8E2">HOME</div>
+                <div style="position:absolute;right:42px;top:14px;width:11px;height:11px"><div style="position:absolute;inset:0;border-radius:50%;background:rgba(216,180,104,.5);animation:ah-ping 1.8s infinite"></div><div style="position:absolute;inset:1.5px;border-radius:50%;background:#D8B468;border:1.5px solid #8a6f2c"></div></div>
+                <div style="position:absolute;bottom:6px;right:9px;font:600 8px 'JetBrains Mono';color:#15C2CE">tap waypoint → go to</div>
+              </div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>Spotlight</div>
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3.5L13 19V5L7.5 9z"/><path d="M16.5 8.5a4.5 4.5 0 010 7"/></svg>Talk</div>
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.3"/></svg>Go to…</div>
+              </div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:11px 13px;display:flex;justify-content:space-between;font:600 10.5px 'JetBrains Mono';color:#C3CDD8;letter-spacing:.02em"><span>ALT 32ft</span><span>WIND 11mph</span><span style="color:#3FCB84">BATT 71%</span><span style="color:#15C2CE">4min left</span></div>
+              <div style="margin-top:auto;background:rgba(255,77,69,.12);border:1.5px solid #FF4D45;color:#FF7B75;font:800 13px Manrope;text-align:center;padding:14px;border-radius:14px;letter-spacing:.04em;margin-bottom:8px">RETURN TO NEST</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.2 GUARDIAN LIVE -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">3.2 · GUARDIAN LIVE VIEW</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:182px;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 9px,#0c1219 9px,#0c1219 18px);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center">
+                <div style="position:absolute;left:0;right:0;top:0;height:42%;background:linear-gradient(rgba(21,194,206,.14),transparent);animation:ah-scan 3.6s linear infinite"></div>
+                <div style="position:absolute;top:10px;left:11px;display:flex;align-items:center;gap:6px;background:rgba(11,15,21,.55);padding:4px 8px;border-radius:7px"><div style="width:7px;height:7px;border-radius:50%;background:#FF4D45;box-shadow:0 0 7px #FF4D45;animation:ah-pulse 1.3s infinite"></div><span style="font:700 9px 'JetBrains Mono';color:#fff;letter-spacing:.06em">MAST CAM</span></div>
+                <div style="text-align:center;z-index:1"><div style="font:700 11px 'JetBrains Mono';letter-spacing:.1em;color:#C3CDD8">HALLWAY → KITCHEN</div><div style="font:500 11px Manrope;color:#8A97A6;margin-top:3px">mast raised · counter height</div></div>
+                <div style="position:absolute;bottom:8px;left:11px;font:500 8.5px 'JetBrains Mono';color:#4A5564">[ Guardian mast feed ]</div>
+              </div>
+              <div style="display:flex;gap:4px;background:#0B0F15;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:4px"><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:700 10.5px Manrope;color:#04181A;background:#15C2CE">Living</div><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Kitchen</div><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Hall</div><div style="flex:1;text-align:center;padding:8px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Entry</div></div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:11px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M6 11l6-6 6 6"/></svg>Raise mast</div>
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:11px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3.5L13 19V5L7.5 9z"/><path d="M16.5 8.5a4.5 4.5 0 010 7"/></svg>Two-way talk</div>
+              </div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:11px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="6" fill="currentColor"/></svg>Record clip</div>
+                <div style="flex:1;background:rgba(255,77,69,.1);border:1px solid rgba(255,77,69,.35);border-radius:13px;padding:11px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#FF7B75;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16v-5a6 6 0 00-12 0v5l-2 2h16z"/><path d="M10 21a2 2 0 004 0"/></svg>Siren + strobe</div>
+              </div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.08em;color:#5E6B7B;margin-bottom:8px">SWEEP CHECKLIST</div><div style="font:500 11.5px/1.6 Manrope;color:#C3CDD8">Front door <span style="color:#3FCB84">✓</span> · Patio <span style="color:#3FCB84">✓</span> · Garage <span style="color:#E5A23A">checking…</span><br>Air quality OK · No smoke signature</div></div>
+              <div style="margin-top:auto;background:rgba(63,203,132,.1);border:1px solid rgba(63,203,132,.32);border-radius:13px;padding:11px 13px;display:flex;align-items:center;gap:9px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FCB84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><div style="font:500 11px/1.35 Manrope;color:#9fb6a8">Bed 1 &amp; Bed 2 excluded · shutter auto</div></div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============ FLOW 04 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px;border-top:1px solid rgba(255,77,69,.22);padding-top:40px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(255,77,69,.5);background:rgba(255,77,69,.08);color:#FF7B75;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">04</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#FF7B75;text-transform:uppercase;margin-bottom:7px">Flow 04 · The Moment That Matters</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Alert → Verify → Deter → Escalate</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">Never more than one decision per screen · the biggest buttons in the app · works one-handed for a frightened user at 2 a.m.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 4.1 VERIFIED ALERT -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">4.1 · VERIFIED ALERT</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,77,69,.25);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 50px -18px rgba(255,77,69,.35)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column;background-image:radial-gradient(120% 60% at 50% -10%,rgba(255,77,69,.22),transparent 60%)">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">2:14</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:13px;flex:1">
+              <div style="display:flex;align-items:center;gap:9px;justify-content:center;margin-top:4px"><div style="width:9px;height:9px;border-radius:50%;background:#FF4D45;box-shadow:0 0 12px #FF4D45;animation:ah-pulse 1.1s infinite"></div><span style="font:800 11px 'JetBrains Mono';letter-spacing:.16em;color:#FF7B75">PERSON VERIFIED</span></div>
+              <div style="text-align:center"><div style="font:800 25px/1.1 Manrope;color:#fff;letter-spacing:-.02em">Someone is at the<br>backyard fence</div><div style="font:600 12px 'JetBrains Mono';color:#FF9b96;margin-top:8px">2:14 AM · 92% PERSON · SENTINEL ON STATION</div></div>
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:230px;border:1px solid rgba(255,255,255,.08);background:radial-gradient(circle at 60% 56%,#ffe66b 0%,#ff9a3d 11%,#ec4f6e 24%,#8a3fa6 44%,#2a2d6e 66%,#0a1230 100%)">
+                <div style="position:absolute;left:60%;top:56%;transform:translate(-50%,-50%);width:78px;height:88px;border:2px solid rgba(255,255,255,.9);border-radius:5px"></div>
+                <div style="position:absolute;left:60%;top:56%;transform:translate(-50%,-86px);font:700 9px 'JetBrains Mono';color:#fff;text-shadow:0 1px 3px #000">LOCKED 92%</div>
+                <div style="position:absolute;top:10px;left:11px;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.4);padding:4px 8px;border-radius:7px"><div style="width:7px;height:7px;border-radius:50%;background:#FF4D45;animation:ah-pulse 1.3s infinite"></div><span style="font:700 9px 'JetBrains Mono';color:#fff;letter-spacing:.06em">THERMAL LOCK</span></div>
+                <div style="position:absolute;bottom:8px;right:11px;font:500 8.5px 'JetBrains Mono';color:rgba(255,255,255,.7)">[ thermal feed ]</div>
+              </div>
+              <div style="background:#15C2CE;color:#04181A;font:800 16px Manrope;text-align:center;padding:17px;border-radius:16px;box-shadow:0 12px 30px -8px rgba(21,194,206,.55)">Open live response</div>
+              <div style="display:flex;gap:8px"><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:13px;border-radius:13px">It's someone I know</div><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:13px;border-radius:13px">Snooze 10 min</div></div>
+              <div style="margin-top:auto;background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.08em;color:#5E6B7B;margin-bottom:8px">SYSTEM ALREADY ACTED</div><div style="font:500 11.5px/1.6 Manrope;color:#C3CDD8">Guardian moved to entry hall · exterior lights flashed · all doors locked <span style="color:#3FCB84">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.2 LIVE RESPONSE CONSOLE -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">4.2 · LIVE RESPONSE CONSOLE</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,77,69,.25);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 50px -18px rgba(255,77,69,.3)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">2:16</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="position:relative;border-radius:16px;overflow:hidden;height:200px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column">
+                <div style="flex:1;position:relative;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 9px,#0c1219 9px,#0c1219 18px);display:flex;align-items:center;justify-content:center"><div style="position:absolute;left:0;right:0;top:0;height:50%;background:linear-gradient(rgba(21,194,206,.14),transparent);animation:ah-scan 3s linear infinite"></div><span style="font:700 9px 'JetBrains Mono';color:#15C2CE;position:absolute;top:8px;left:10px;background:rgba(11,15,21,.5);padding:3px 7px;border-radius:6px">▲ SENTINEL</span><span style="font:500 10px Manrope;color:#8A97A6;z-index:1">tracking at standoff</span></div>
+                <div style="flex:1;position:relative;background:repeating-linear-gradient(132deg,#10171f,#10171f 9px,#0d141b 9px,#0d141b 18px);display:flex;align-items:center;justify-content:center;border-top:2px solid #04060A"><span style="font:700 9px 'JetBrains Mono';color:#15C2CE;position:absolute;top:8px;left:10px;background:rgba(11,15,21,.5);padding:3px 7px;border-radius:6px">▼ GUARDIAN</span><span style="font:500 10px Manrope;color:#8A97A6;z-index:1">holding patio door</span></div>
+                <div style="position:absolute;bottom:7px;right:11px;font:500 8px 'JetBrains Mono';color:#4A5564">[ split live feed ]</div>
+              </div>
+              <div style="background:#15C2CE;color:#04181A;border-radius:15px;padding:13px 14px;display:flex;align-items:center;gap:11px;box-shadow:0 12px 28px -10px rgba(21,194,206,.55)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04181A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg><div><div style="font:800 14px Manrope">Voice challenge</div><div style="font:600 10px Manrope;color:#0a3d42;margin-top:1px">“You are being recorded. Police contacted.”</div></div></div>
+              <div style="display:flex;gap:8px">
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>Spotlight</div>
+                <div style="flex:1;background:rgba(255,77,69,.1);border:1px solid rgba(255,77,69,.35);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#FF7B75;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16v-5a6 6 0 00-12 0v5l-2 2h16z"/><path d="M10 21a2 2 0 004 0"/></svg>All sirens</div>
+                <div style="flex:1;background:#141A23;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#C3CDD8;font:600 10px Manrope"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h3.5L13 19V5L7.5 9z"/><path d="M16.5 8.5a4.5 4.5 0 010 7"/></svg>Live talk</div>
+              </div>
+              <div style="background:#FF4D45;color:#fff;border-radius:15px;padding:14px;display:flex;align-items:center;justify-content:center;gap:10px;font:800 15px Manrope;box-shadow:0 12px 28px -10px rgba(255,77,69,.6)"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.5.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11 11 0 00.56 3.5 1 1 0 01-.24 1z"/></svg>Call 911 — feed link ready</div>
+              <div style="background:linear-gradient(135deg,rgba(216,180,104,.16),rgba(216,180,104,.04));border:1px solid rgba(216,180,104,.4);border-radius:13px;padding:11px 13px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font:800 12px Manrope;color:#E7C77f">Monitoring · Total plan</div><span style="font:600 9px 'JetBrains Mono';color:#D8B468;border:1px solid rgba(216,180,104,.5);border-radius:99px;padding:2px 7px">LIVE</span></div><div style="font:500 11px Manrope;color:#cdb789;margin-top:4px">Agent Dana viewing · requesting priority dispatch</div></div>
+              <div style="margin-top:auto;background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:11px 13px;display:flex;align-items:center;gap:9px;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FCB84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><div style="font:500 11px/1.35 Manrope;color:#9fb6a8">Maya &amp; kids upstairs — shelter prompt sent <span style="color:#3FCB84">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.3 INCIDENT REPORT -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">4.3 · INCIDENT REPORT</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:11px;flex:1">
+              <div style="display:flex;align-items:center;gap:8px"><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#8A97A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7l6 6"/></svg><span style="font:600 12px Manrope;color:#8A97A6">Activity</span></div>
+              <div><div style="display:flex;align-items:center;gap:8px"><span style="font:700 10px 'JetBrains Mono';color:#3FCB84;border:1px solid rgba(63,203,132,.45);background:rgba(63,203,132,.1);border-radius:99px;padding:3px 9px">DETERRED · NO ENTRY</span></div><div style="font:800 19px/1.2 Manrope;color:#fff;letter-spacing:-.02em;margin-top:10px">Incident #0147</div><div style="font:500 12px Manrope;color:#8A97A6;margin-top:3px">June 11 · 2:14–2:19 AM · 5 min</div></div>
+              <div style="position:relative;border-radius:14px;overflow:hidden;height:76px;display:flex;gap:3px;border:1px solid rgba(255,255,255,.07)">
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="flex:1;background:repeating-linear-gradient(132deg,#0f151c,#0f151c 7px,#0c1219 7px,#0c1219 14px)"></div>
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font:700 9px 'JetBrains Mono';color:#C3CDD8;background:rgba(11,15,21,.55);padding:4px 9px;border-radius:7px">6 CLIPS · 2 ANGLES</span></div>
+              </div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:13px;font:500 11px/1 'JetBrains Mono';color:#C3CDD8">
+                <div style="display:flex;gap:9px;margin-bottom:9px"><span style="color:#15C2CE;flex:none">2:14:07</span><span>motion @ fence</span></div>
+                <div style="display:flex;gap:9px;margin-bottom:9px"><span style="color:#15C2CE;flex:none">2:14:21</span><span>Sentinel on station</span></div>
+                <div style="display:flex;gap:9px;margin-bottom:9px"><span style="color:#FF7B75;flex:none">2:14:30</span><span>person verified · 92%</span></div>
+                <div style="display:flex;gap:9px;margin-bottom:9px"><span style="color:#15C2CE;flex:none">2:15:02</span><span>voice challenge played</span></div>
+                <div style="display:flex;gap:9px"><span style="color:#3FCB84;flex:none">2:15:18</span><span>subject fled west</span></div>
+              </div>
+              <div style="display:flex;gap:8px"><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:12px;border-radius:13px">Export for police</div><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:12px;border-radius:13px">Insurance pack</div></div>
+              <div style="margin-top:auto;background:#15C2CE;color:#04181A;font:800 13.5px Manrope;text-align:center;padding:14px;border-radius:15px">Share clip · faces auto-blurred</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============ FLOW 05 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px;border-top:1px solid rgba(255,255,255,.08);padding-top:40px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(21,194,206,.5);background:rgba(21,194,206,.07);color:#15C2CE;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">05</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#15C2CE;text-transform:uppercase;margin-bottom:7px">Flow 05 · Everyone Safe</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Family &amp; Care</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">Security events are rare; caring about people is daily. This tab is the engagement engine — and the reason the subscription survives year two.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 5.1 FAMILY TAB -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">5.1 · FAMILY &amp; CARE HUB</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="font:800 20px Manrope;color:#fff;letter-spacing:-.02em">Family</div>
+              <div style="background:linear-gradient(135deg,rgba(63,203,132,.16),rgba(63,203,132,.04));border:1px solid rgba(63,203,132,.34);border-radius:15px;padding:14px"><div style="font:800 16px Manrope;color:#fff">Everyone accounted for</div><div style="font:500 11.5px Manrope;color:#9fb6a8;margin-top:4px">2 home · 2 away · all check-ins met</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:11px 12px;display:flex;align-items:center;gap:11px"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#15C2CE,#0e8c95);display:flex;align-items:center;justify-content:center;font:800 15px Manrope;color:#04181A;flex:none">M</div><div style="flex:1"><div style="font:700 13px Manrope;color:#EDF1F6">Maya · home 3:12 PM</div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:2px">Arrival clip ✓ · door locked behind her</div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(216,180,104,.28);border-radius:14px;padding:11px 12px;display:flex;align-items:center;gap:11px"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#D8B468,#9c7d3a);display:flex;align-items:center;justify-content:center;font:800 15px Manrope;color:#2a2008;flex:none">G</div><div style="flex:1"><div style="display:flex;align-items:center;gap:7px"><span style="font:700 13px Manrope;color:#EDF1F6">Grandma</span><span style="font:600 8px 'JetBrains Mono';color:#D8B468;border:1px solid rgba(216,180,104,.4);border-radius:99px;padding:2px 6px">ELDER WATCH</span></div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:3px">Morning check-in ✓ · kitchen normal · next 6 PM</div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:11px 12px;display:flex;align-items:center;gap:11px"><div style="width:38px;height:38px;border-radius:50%;background:#1C2530;display:flex;align-items:center;justify-content:center;font:800 14px Manrope;color:#AEB9C6;flex:none">B</div><div style="flex:1"><div style="font:700 13px Manrope;color:#EDF1F6">Biscuit</div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:2px">Last seen: sunroom, 20 min ago · 2 clips today</div></div></div>
+              <div style="display:flex;gap:8px"><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:12px;border-radius:13px">Say hi via Guardian</div><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12px Manrope;text-align:center;padding:12px;border-radius:13px">Set a check-in</div></div>
+              <div style="margin-top:auto;background:rgba(255,77,69,.1);border:1px solid rgba(255,77,69,.4);border-radius:13px;padding:13px;display:flex;align-items:center;justify-content:center;gap:9px;font:700 12.5px Manrope;color:#FF7B75;margin-bottom:8px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF7B75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>Family safe word &amp; shelter plan →</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2 ACTIVITY TIMELINE -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">5.2 · ACTIVITY TIMELINE</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="font:800 20px Manrope;color:#fff;letter-spacing:-.02em">Activity</div>
+              <div style="display:flex;gap:4px;background:#0B0F15;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:4px"><div style="flex:1;text-align:center;padding:7px 0;border-radius:8px;font:700 10.5px Manrope;color:#04181A;background:#15C2CE">All</div><div style="flex:1;text-align:center;padding:7px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Verified</div><div style="flex:1;text-align:center;padding:7px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Patrols</div><div style="flex:1;text-align:center;padding:7px 0;border-radius:8px;font:600 10.5px Manrope;color:#8A97A6">Family</div></div>
+              <div style="background:rgba(255,77,69,.08);border:1px solid rgba(255,77,69,.4);border-radius:14px;padding:12px 13px"><div style="display:flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF7B75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg><span style="font:700 13px Manrope;color:#FF9b96">2:14 AM — Person deterred</span></div><div style="font:500 11px Manrope;color:#cc8f8b;margin-top:5px;padding-left:23px">Backyard · Incident #0147 · view report →</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 12.5px Manrope;color:#EDF1F6">11:02 PM — Goodnight sweep complete</div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:3px">All doors/windows verified · 14 photos</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 12.5px Manrope;color:#EDF1F6">3:40 PM — Perimeter patrol</div><div style="font:500 10.5px Manrope;color:#3FCB84;margin-top:3px">3 min 42 s · nothing unusual</div></div>
+              <div style="background:#141A23;border:1px dashed rgba(255,255,255,.16);border-radius:14px;padding:12px 13px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 12px Manrope;color:#C3CDD8">Filtered today</div><span style="font:700 11px 'JetBrains Mono';color:#5E6B7B">7</span></div><div style="font:500 10.5px Manrope;color:#7C8898;margin-top:4px">3 animals · 2 vehicles passing · 2 weather</div></div>
+              <div style="margin-top:auto;border:1px solid rgba(255,255,255,.12);color:#8A97A6;font:600 12px Manrope;text-align:center;padding:11px;border-radius:13px;margin-bottom:8px">Load earlier…</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============ FLOW 06 ============ -->
+  <section>
+    <div style="display:flex;gap:18px;align-items:flex-start;margin:68px 0 30px;border-top:1px solid rgba(255,255,255,.08);padding-top:40px">
+      <div style="width:48px;height:48px;border-radius:14px;border:1.5px solid rgba(21,194,206,.5);background:rgba(21,194,206,.07);color:#15C2CE;font:800 19px 'JetBrains Mono';display:flex;align-items:center;justify-content:center;flex:none">06</div>
+      <div>
+        <div style="font:700 11px/1 'JetBrains Mono';letter-spacing:.18em;color:#15C2CE;text-transform:uppercase;margin-bottom:7px">Flow 06 · Trust &amp; Housekeeping</div>
+        <h2 style="font:800 30px/1 Manrope;letter-spacing:-.02em;margin:0;color:#fff">Devices, Privacy &amp; Plans</h2>
+        <p style="margin:9px 0 0;font:500 14px/1.5 Manrope;color:#8A97A6;max-width:760px">Where skeptical buyers decide to keep the product. Privacy controls are first-class screens, not legal pages.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+      <!-- 6.1 DEVICES & HEALTH -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">6.1 · DEVICES &amp; HEALTH</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;align-items:center;gap:8px"><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#8A97A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7l6 6"/></svg><span style="font:800 18px Manrope;color:#fff;letter-spacing:-.02em">Devices &amp; Health</span></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 13px Manrope;color:#EDF1F6">Sentinel</div><span style="font:700 10px 'JetBrains Mono';color:#3FCB84">96%</span></div><div style="font:500 10.5px 'JetBrains Mono';color:#8A97A6;margin-top:4px;letter-spacing:.02em">props OK · fw 2.4.1 ✓ · 412 flights</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 13px Manrope;color:#EDF1F6">Nest Dock</div><div style="font:500 10.5px 'JetBrains Mono';color:#8A97A6;margin-top:4px;letter-spacing:.02em">heater ready · hatch nominal · anchored ✓</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 13px Manrope;color:#EDF1F6">Guardian</div><div style="font:500 10.5px 'JetBrains Mono';color:#8A97A6;margin-top:4px;letter-spacing:.02em">docked · wheels OK · shutter ✓</div></div>
+              <div style="background:linear-gradient(135deg,rgba(21,194,206,.12),rgba(21,194,206,.03));border:1px solid rgba(21,194,206,.3);border-radius:14px;padding:12px 13px"><div style="font:700 12.5px Manrope;color:#7fe3eb">Weather watch</div><div style="font:500 11px/1.4 Manrope;color:#90b6bc;margin-top:4px">Wind 9 mph — flights OK · rain 6 PM, Sentinel auto-grounds, sensors take over</div></div>
+              <div style="background:rgba(229,162,58,.1);border:1px solid rgba(229,162,58,.35);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div><div style="font:700 12px Manrope;color:#e9be7e">Prop set due in ~90 flights</div><div style="font:500 10.5px Manrope;color:#bb965c;margin-top:2px">Ship me one — $19 · free on Total</div></div><div style="background:#E5A23A;color:#2a1d05;font:800 11px Manrope;padding:9px 12px;border-radius:10px;flex:none">Order</div></div>
+              <div style="margin-top:auto;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 12.5px Manrope;text-align:center;padding:12px;border-radius:13px;margin-bottom:8px">Run self-test patrol</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.2 PRIVACY CENTER -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">6.2 · PRIVACY CENTER</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;align-items:center;gap:8px"><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#8A97A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7l6 6"/></svg><span style="font:800 18px Manrope;color:#fff;letter-spacing:-.02em">Privacy Center</span></div>
+              <div style="background:linear-gradient(135deg,rgba(21,194,206,.14),rgba(21,194,206,.03));border:1px solid rgba(21,194,206,.32);border-radius:15px;padding:14px"><div style="font:800 16px Manrope;color:#fff">Your footage. Your rules.</div><div style="font:500 11px Manrope;color:#90b6bc;margin-top:4px">End-to-end encrypted · AI runs on your Hub</div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12px Manrope;color:#EDF1F6">Neighbor auto-blur beyond property line</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12px Manrope;color:#EDF1F6">Share with police only with my export</div><div style="width:40px;height:23px;border-radius:99px;background:#15C2CE;padding:2px;display:flex;justify-content:flex-end;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#04181A"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px"><div style="font:600 12px Manrope;color:#EDF1F6">Indoor recording when home &amp; disarmed</div><div style="width:40px;height:23px;border-radius:99px;background:#2A333F;padding:2px;display:flex;justify-content:flex-start;flex:none"><div style="width:19px;height:19px;border-radius:50%;background:#9AA6B3"></div></div></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 13px"><div style="font:700 12.5px Manrope;color:#EDF1F6">No-go zones</div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:3px">Bed 1 · Bed 2 · Bath — edit map →</div></div>
+              <div style="margin-top:auto;display:flex;gap:8px;margin-bottom:8px"><div style="flex:1;border:1px solid rgba(255,255,255,.14);color:#AEB9C6;font:600 11.5px Manrope;text-align:center;padding:12px;border-radius:13px">Download my data</div><div style="flex:1;border:1px solid rgba(255,77,69,.35);color:#FF7B75;font:600 11.5px Manrope;text-align:center;padding:12px;border-radius:13px">Delete footage</div></div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.3 PLAN & MONITORING -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 10px/1 'JetBrains Mono';letter-spacing:.12em;color:#5E6B7B">6.3 · PLAN &amp; MONITORING</div>
+        <div style="width:322px;background:#04060A;border-radius:46px;padding:9px;border:1px solid rgba(255,255,255,.09);box-shadow:0 40px 80px -30px rgba(0,0,0,.9)">
+          <div style="position:relative;background:#0B0F15;border-radius:39px;overflow:hidden;min-height:668px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 24px 4px"><span style="font:700 14px Manrope;color:#EDF1F6">9:41</span><div style="display:flex;gap:7px;align-items:center"><div style="display:flex;gap:1.6px;align-items:flex-end;height:11px"><div style="width:3px;height:5px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:7px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:9px;background:#EDF1F6;border-radius:1px"></div><div style="width:3px;height:11px;background:#EDF1F6;border-radius:1px"></div></div><span style="font:700 9px 'JetBrains Mono';color:#EDF1F6">5G</span><div style="width:24px;height:12px;border:1.5px solid rgba(237,241,246,.55);border-radius:3px;padding:1.5px"><div style="width:72%;height:100%;background:#EDF1F6;border-radius:1px"></div></div></div></div>
+            <div style="padding:12px 16px 0;display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;align-items:center;gap:8px"><svg width="9" height="14" viewBox="0 0 8 14" fill="none" stroke="#8A97A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1L1 7l6 6"/></svg><span style="font:800 18px Manrope;color:#fff;letter-spacing:-.02em">Plan &amp; Monitoring</span></div>
+              <div style="background:#141A23;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:13px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 13px Manrope;color:#EDF1F6">Plus</div><span style="font:700 12px 'JetBrains Mono';color:#C3CDD8">$34.99/mo</span></div><div style="font:500 10.5px Manrope;color:#8A97A6;margin-top:3px">AI verification · 60-day video · family suite</div></div>
+              <div style="background:linear-gradient(135deg,rgba(216,180,104,.18),rgba(216,180,104,.04));border:1px solid rgba(216,180,104,.45);border-radius:14px;padding:13px;position:relative"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font:800 14px Manrope;color:#E7C77f">Total</div><span style="font:700 12px 'JetBrains Mono';color:#E7C77f">$59.99/mo</span></div><div style="font:500 10.5px/1.5 Manrope;color:#cdb789;margin-top:5px">24/7 monitoring · agent voice-down · priority dispatch · hardware replacement · insurance pack</div></div>
+              <div style="background:#D8B468;color:#2a2008;font:800 14px Manrope;text-align:center;padding:14px;border-radius:14px;box-shadow:0 10px 26px -8px rgba(216,180,104,.5)">Try Total free for 60 days</div>
+              <div style="background:rgba(63,203,132,.08);border:1px solid rgba(63,203,132,.3);border-radius:14px;padding:12px 13px"><div style="font:700 12px Manrope;color:#7fdcab">Insurance savings</div><div style="font:500 10.5px/1.4 Manrope;color:#90c2a5;margin-top:3px">Your carrier may discount 5–15% — estimate: <b style="color:#9af0c3">$212/yr</b></div></div>
+              <div style="border:1px solid rgba(255,255,255,.12);color:#8A97A6;font:600 12px Manrope;text-align:center;padding:11px;border-radius:13px">Compare all plans</div>
+              <div style="margin-top:auto;background:rgba(21,194,206,.08);border:1px solid rgba(21,194,206,.28);border-radius:13px;padding:11px 13px;font:500 10.5px/1.4 Manrope;color:#90b6bc;margin-bottom:8px">911 tools, sirens &amp; live view work on every plan — even lapsed ones. Safety is never paywalled.</div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.07);background:#0E131A;padding:9px 4px 10px">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/></svg>Home</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 12L18 6.5"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>Patrol</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></svg>Family</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5E6B7B;font:600 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-6 3.6 12 2.2-6H21"/></svg>Activity</div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#15C2CE;font:700 9.5px Manrope"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- FLOWS-END -->
+
+</div>
+</x-dc>
+</body>
+</html>
